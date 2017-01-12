@@ -114,7 +114,7 @@ public class DataService {
 			office.setCountry(rs.getString("country"));
 			office.setCity(rs.getString("city"));
 			office.setContact(rs.getString("contact"));
-			office.setContact(rs.getString("mobile"));
+			office.setMobile(rs.getString("mobile"));
 			list.add(office);
 		}
 		
