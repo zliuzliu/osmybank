@@ -21,7 +21,7 @@
 		
 	<table>
 	    <tr>
-	    <td class='label'>国家</td><td class='label'>城市</td><td class='label'>联系方式</td>
+	    <td class='label'>国家</td><td class='label'>城市</td><td class='label'>联系人</td><td class='label'>联系方式</td>
 	    </tr>
 		<%
 			DataService m = new DataService();
@@ -34,6 +34,8 @@
 				out.print(o.getCity());
 				out.print("</td><td class='blackfont'>");
 				out.print(o.getContact());
+				out.print("</td><td class='blackfont'>");
+				out.print(o.getMobile());
 				out.print("</td></tr>");
 			}
 		%>
