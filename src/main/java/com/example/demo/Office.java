@@ -29,5 +29,13 @@ public class Office {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	
+	public String getMobile() {
+		return mobile;
+	}
 
 }
