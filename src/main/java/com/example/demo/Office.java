@@ -5,6 +5,7 @@ public class Office {
 	private String country;
 	private String city;
 	private String contact;
+	private String mobile;
 
 	public String getContact() {
 		return contact;
