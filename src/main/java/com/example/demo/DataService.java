@@ -16,11 +16,11 @@ public class DataService {
 	private String datebasePassword = "";
 
 	public DataService() {
-		this.setDatebaseIp(System.getenv("MYSQL_MASTER_SERVICE_HOST").replaceAll("\"", ""));
-		this.setDatebasePort(System.getenv("MYSQL_MASTER_SERVICE_PORT").replaceAll("\"", ""));
-		this.setDatebaseName("sampledb");
-		this.setDatebaseUsername("dev");
-		this.setDatebasePassword("welcome1");
+		this.setDatebaseIp(System.getenv("MYSQL_SERVICE_HOST").replaceAll("\"", ""));
+		this.setDatebasePort(System.getenv("MYSQL_SERVICE_PORT").replaceAll("\"", ""));
+		this.setDatebaseName(System.getenv("MYSQL_DATABASE").replaceAll("\"", ""));
+		this.setDatebaseUsername(System.getenv("MYSQL_USER").replaceAll("\"", ""));
+		this.setDatebasePassword(System.getenv("MYSQL_PASSWORD").replaceAll("\"", ""));
 
 		this.setupDatabase();
 	}
@@ -81,24 +81,24 @@ public class DataService {
 	}
 
 	public void setupDatabase() {
-//		try {
-//			Connection conn = generateConnection();
-//			executeSql(conn,
-//					"create table office (id int(2) primary key auto_increment, country char(25), city char(25) )");
-//
-//			executeSql(conn, "insert into office (country, city) values ('China','Shenzhen');");
-//			executeSql(conn, "insert into office (country, city) values ('India','Armrisar');");
-//			executeSql(conn, "insert into office (country, city) values ('Malaysia','Pengang');");
-//			executeSql(conn, "insert into office (country, city) values ('Sir Lanka','Galle');");
-//			executeSql(conn, "insert into office (country, city) values ('Japan','Matsusaka');");
-//			executeSql(conn, "insert into office (country, city) values ('Austria','Salzburg');");
-//			executeSql(conn, "insert into office (country, city) values ('Belgium','Antpur');");
-//
-//			//Bad practice, demo only
-//			conn.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Connection conn = generateConnection();
+			executeSql(conn,
+					"create table office (id int(2) primary key auto_increment, country char(25), city char(25), contact char(25), mobile char(25) )");
+
+			executeSql(conn, "insert into office (country, city, contact, mobile) values ('China','Shenzhen','Zhang Shan','13800138000');");
+			executeSql(conn, "insert into office (country, city, contact, mobile) values ('India','Armrisar','Li Si','13500135000');");
+			executeSql(conn, "insert into office (country, city, contact, mobile) values ('Malaysia','Pengang','Wang Wu','13900139000');");
+			executeSql(conn, "insert into office (country, city, contact, mobile) values ('Sir Lanka','Galle','Chen Liu','13600136000');");
+			executeSql(conn, "insert into office (country, city, contact, mobile) values ('Japan','Matsusaka','Wang Er Ma zi','13700137000');");
+			//executeSql(conn, "insert into office (country, city) values ('Austria','Salzburg');");
+			//executeSql(conn, "insert into office (country, city) values ('Belgium','Antpur');");
+
+			//Bad practice, demo only
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public ArrayList<Office> queryOffice() throws Exception {
@@ -114,6 +114,7 @@ public class DataService {
 			office.setCountry(rs.getString("country"));
 			office.setCity(rs.getString("city"));
 			office.setContact(rs.getString("contact"));
+			office.setContact(rs.getString("mobile"));
 			list.add(office);
 		}
 		
